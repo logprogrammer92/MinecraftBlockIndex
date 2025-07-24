@@ -28,13 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            addBtn = new Button();
+            delViewBtn = new Button();
             SuspendLayout();
+            // 
+            // addBtn
+            // 
+            addBtn.Location = new Point(103, 322);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(124, 55);
+            addBtn.TabIndex = 0;
+            addBtn.Text = "Add Block";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
+            // 
+            // delViewBtn
+            // 
+            delViewBtn.Location = new Point(420, 322);
+            delViewBtn.Name = "delViewBtn";
+            delViewBtn.Size = new Size(127, 55);
+            delViewBtn.TabIndex = 1;
+            delViewBtn.Text = "Delete/View Block";
+            delViewBtn.UseVisualStyleBackColor = true;
+            delViewBtn.Click += delViewBtn_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(840, 511);
+            Controls.Add(delViewBtn);
+            Controls.Add(addBtn);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -42,5 +66,8 @@
         }
 
         #endregion
+
+        private Button addBtn;
+        private Button delViewBtn;
     }
 }

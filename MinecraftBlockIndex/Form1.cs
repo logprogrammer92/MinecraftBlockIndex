@@ -7,7 +7,12 @@ namespace MinecraftBlockIndex
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delViewBtn_Click(object sender, EventArgs e)
         {
 
         }
