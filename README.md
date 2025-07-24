@@ -1,5 +1,6 @@
 # Minecraft Block Index
-This is a simple index of Minecraft blocks, their names, and their IDs.
+This is a index of Minecraft blocks that will store & display their names & the picture of the blocks
+texture using basic CRUD operations.
 
 ## How to use
 - Clone or download the repository.
