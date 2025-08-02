@@ -65,6 +65,7 @@
             btnNeedHelp.TabIndex = 7;
             btnNeedHelp.Text = "Need help?";
             btnNeedHelp.UseVisualStyleBackColor = true;
+            btnNeedHelp.Click += btnNeedHelp_Click;
             // 
             // lblName
             // 
@@ -134,6 +135,7 @@
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Enter";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // btnExit
             // 
@@ -143,6 +145,7 @@
             btnExit.TabIndex = 1;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // addBlockForm
             // 
