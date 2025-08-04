@@ -8,3 +8,6 @@ texture using basic CRUD operations.
 - [Recommended to use Visual Studio](https://dotnet.microsoft.com/en-us/download/dotnet)
 - Open the project in Visual Studio.
 
+## Database Information
+- This project utilizes a Microsoft SQL database and will connect to that database using `localdb`. To change this behavior, modify the [connection string](./MinecraftBlockIndex/AddBlockDB.cs).
+- 
