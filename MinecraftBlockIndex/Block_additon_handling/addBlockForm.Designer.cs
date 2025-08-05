@@ -49,6 +49,7 @@
             btnExit.TabIndex = 4;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // btnSubmit
             // 
@@ -83,6 +84,7 @@
             btnNeedHelp.TabIndex = 7;
             btnNeedHelp.Text = "Need help?";
             btnNeedHelp.UseVisualStyleBackColor = true;
+            btnNeedHelp.Click += btnNeedHelp_Click;
             // 
             // lblName
             // 
