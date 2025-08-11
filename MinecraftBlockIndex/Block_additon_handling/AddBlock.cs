@@ -8,6 +8,14 @@ namespace MinecraftBlockIndex.Block_additon_handling
 {
     internal class AddBlock
     {
+        public AddBlock(string blockName, bool isBurnable, bool isTransparent, bool isFull, bool emitsLight)
+        {
+            BlockName = blockName;
+            IsBurnable = isBurnable;
+            IsTransparent = isTransparent;
+            IsFull = isFull;
+            EmitsLight = emitsLight;
+        }
         public int BlockID { get; set; } //Unique ID for block
         public string BlockName { get; set; } //Name of block tied to ID
         public bool IsBurnable { get; set; } //Indicates if block can be burned by fire or lava
