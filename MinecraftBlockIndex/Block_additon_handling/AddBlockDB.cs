@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 using MinecraftBlockIndex.Block_additon_handling;
 
 
-namespace MinecraftBlockIndex
+namespace MinecraftBlockIndex.Block_additon_handling
 {
     static class AddBlockDB
     {
