@@ -51,17 +51,139 @@ namespace MinecraftBlockIndex.Block_additon_handling
             // Close connection to database
             con.Close();
         }
+
+        /// <summary>
+        /// Updates a block in the database.
+        /// </summary>
+        /// <param name="block"></param>
         public static void Update(AddBlock block)
         {
-            throw new NotImplementedException();
+            // Establish connection to database
+            SqlConnection con = GetDatabaseConnection();
+
+            // Prepare insert statement
+            SqlCommand updateCmd = new SqlCommand();
+            updateCmd.Connection = con;
+
+            updateCmd.CommandText = "UPDATE AddBlock(BlockName, IsBurnable, IsTransparent, IsFull, EmitsLight)" +
+                "VALUES (@name, @isBurnable, @isTransparent, @isFull, @EmitsLight)" +
+                "WHERE BlockId = @BlockId";
+            updateCmd.Parameters.AddWithValue("@name", block.BlockName);
+            updateCmd.Parameters.AddWithValue("@isBurnable", block.IsBurnable);
+            updateCmd.Parameters.AddWithValue("@isTransparent", block.IsTransparent);
+            updateCmd.Parameters.AddWithValue("@isFull", block.IsFull);
+            updateCmd.Parameters.AddWithValue("@EmitsLight", block.EmitsLight);
+            updateCmd.Parameters.AddWithValue("@BlockId", block.BlockID);
+
+
+            // Open connection to database
+            con.Open();
+
+            // Execute insert query
+            updateCmd.ExecuteNonQuery();
+
+            // Close connection to database
+            con.Close();
         }
+
+        /// <summary>
+        /// Deletes a block from the database.
+        /// </summary>
+        /// <param name="block"></param>
         public static void Delete(AddBlock block) 
         {
-            throw new NotImplementedException();
+            // Establish connection to database
+            SqlConnection con = GetDatabaseConnection();
+
+            // Prepare insert statement
+            SqlCommand deleteCommand = new SqlCommand();
+            deleteCommand.Connection = con;
+
+            deleteCommand.CommandText = "DELETE FROM AddBlock WHERE BlockId = @BlockId";
+
+            deleteCommand.Parameters.AddWithValue("@BlockId", block.BlockID);
+
+
+            // Open connection to database
+            con.Open();
+
+            // Execute insert query
+            deleteCommand.ExecuteNonQuery();
+
+            // Close connection to database
+            con.Close();
         }
+
+        /// <summary>
+        /// Retrieves a block from the database by its ID.
+        /// </summary>
+        /// <param name="BlockID"></param>
         public static void GetBlock(int BlockID)
         {
-            throw new NotImplementedException();
+            // Establish connection to database
+            SqlConnection con = GetDatabaseConnection();
+
+            // Prepare insert statement
+            SqlCommand getCommand = new SqlCommand();
+            getCommand.Connection = con;
+
+            getCommand.CommandText = "SELECT BlockID, BlockName, IsBurnable, IsTransparent, IsFull, EmitsLight" + 
+                "FROM AddBlock WHERE BlockId = @BlockId";
+
+            getCommand.Parameters.AddWithValue("@BlockId", BlockID);
+
+            // Open connection to database
+            con.Open();
+
+            // Execute insert query
+            getCommand.ExecuteNonQuery();
+
+            // Close connection to database
+            con.Close();
+        }
+
+        /// <summary>
+        /// Retrieves all blocks from the database.
+        /// </summary>
+        /// <returns></returns>
+        public static List<AddBlock> GetAllBlocks()
+        {
+            // Get connection
+            SqlConnection conn = GetDatabaseConnection();
+
+            // Prepare the query
+            SqlCommand selCmd = new SqlCommand();
+            selCmd.Connection = conn;
+            selCmd.CommandText = "SELECT BlockID, BlockName, IsBurnable, IsTransparent, IsFull, EmitsLight" +
+                " FROM AddBlock";
+
+            conn.Open();
+
+            // Execute the query and use results
+            SqlDataReader reader = selCmd.ExecuteReader();
+
+            List<AddBlock> blocks = new();
+            while (reader.Read())
+            {
+                int blockId = Convert.ToInt32(reader["BlockId"]);
+                String blockName = reader["BlockName"].ToString();
+                bool isBurnable = reader.GetBoolean(reader.GetOrdinal(name: "IsBurnable"));
+                bool isTransparent = reader.GetBoolean(reader.GetOrdinal(name: "IsTransparent"));
+                bool isFull = reader.GetBoolean(reader.GetOrdinal(name: "IsFull"));
+                bool emitsLight = reader.GetBoolean(reader.GetOrdinal(name: "EmitsLight"));
+
+
+                AddBlock tempBlock = new AddBlock(blockName, isBurnable, isTransparent, isFull, emitsLight);
+                tempBlock.BlockID = blockId;
+
+                blocks.Add(tempBlock);
+            }
+
+            // Close the connection
+            conn.Close();
+
+            // Return list of customers
+            return blocks;
         }
     }
 }
