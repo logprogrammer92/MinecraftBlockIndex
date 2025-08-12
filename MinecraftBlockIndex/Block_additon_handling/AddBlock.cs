@@ -8,7 +8,6 @@ namespace MinecraftBlockIndex.Block_additon_handling
 {
     internal class AddBlock
     {
-        Issue#16-addBlockDataVerification-Toast
         //object parameters for block addition
         public int BlockID { get; private set; } //Unique ID for block
         public required string BlockName { get; set; } //Name of block tied to ID
