@@ -1,3 +1,5 @@
+using MinecraftBlockIndex.Block_additon_handling;
+
 namespace MinecraftBlockIndex
 {
     public partial class Form1 : Form
@@ -25,6 +27,12 @@ namespace MinecraftBlockIndex
                                     "database for future viewing, remove a block from the database, or bring up \n" +
                                     "this handy guide again!";
             MessageBox.Show(helpMessage);
+        }
+
+        private void btnAddBlock_Click(object sender, EventArgs e)
+        {
+            addBlockForm addBlockForm = new addBlockForm();
+            addBlockForm.ShowDialog();
         }
     }
 }

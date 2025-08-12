@@ -47,6 +47,7 @@
             btnAddBlock.TabIndex = 0;
             btnAddBlock.Text = "Add A Block";
             btnAddBlock.UseVisualStyleBackColor = true;
+            btnAddBlock.Click += btnAddBlock_Click;
             // 
             // btnExit
             // 
