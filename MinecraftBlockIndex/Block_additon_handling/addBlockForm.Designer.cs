@@ -59,6 +59,7 @@
             btnSubmit.TabIndex = 2;
             btnSubmit.Text = "Enter";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // boxAddBlock
             // 
