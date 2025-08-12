@@ -25,7 +25,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnNeedHelp_Click(object sender, EventArgs e)
         {
-            string helpMessage =  "This help message is to guide the user in adding a block\n" +
+            string helpMessage = "This help message is to guide the user in adding a block\n" +
                                   "To add a block, please fill in the following details:\n" +
                                   "Name: the identifier given to the block in the form of a formal name\n\n" +
 
@@ -36,6 +36,11 @@ namespace MinecraftBlockIndex.Block_additon_handling
                                   "Is it transparent: Can you see through the block like glass or leaves?\n"
                                   ;
             MessageBox.Show(helpMessage);
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
