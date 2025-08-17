@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using MinecraftBlockIndex.Block_additon_handling;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace MinecraftBlockIndex.Block_additon_handling
@@ -22,7 +19,6 @@ namespace MinecraftBlockIndex.Block_additon_handling
         {
             // Establish a connection to the database
             return new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MinecraftBlockIndex;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
-            //Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; Trust Server Certificate = False; Application Intent = ReadWrite; Multi Subnet Failover = False
         }
 
         /// <summary>
@@ -59,6 +55,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
         /// Updates a block in the database.
         /// </summary>
         /// <param name="block"></param>
+        /// <returns>Number of rows affected</returns>
         public static int Update(AddBlock block)
         {
             // Establish connection to database
