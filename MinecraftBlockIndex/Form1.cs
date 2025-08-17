@@ -22,6 +22,7 @@ namespace MinecraftBlockIndex
                     comboBoxBlock.Items.Add(block);
                 }
             }
+            btnViewBlock.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,6 +73,7 @@ namespace MinecraftBlockIndex
         {
             UpdateViewBlockForm viewBlockForm = new UpdateViewBlockForm((AddBlock)comboBoxBlock.SelectedItem);
             viewBlockForm.ShowDialog();
+            refreshBlockData();
 
         }
     }

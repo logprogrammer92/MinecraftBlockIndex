@@ -59,7 +59,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
         /// Updates a block in the database.
         /// </summary>
         /// <param name="block"></param>
-        public static void Update(AddBlock block)
+        public static int Update(AddBlock block)
         {
             // Establish connection to database
             SqlConnection con = GetDatabaseConnection();
@@ -68,9 +68,9 @@ namespace MinecraftBlockIndex.Block_additon_handling
             SqlCommand updateCmd = new SqlCommand();
             updateCmd.Connection = con;
 
-            updateCmd.CommandText = "UPDATE AddBlock(BlockName, IsBurnable, IsTransparent, IsFull, EmitsLight)" +
-                "VALUES (@name, @isBurnable, @isTransparent, @isFull, @EmitsLight)" +
-                "WHERE BlockId = @BlockId";
+            updateCmd.CommandText = "UPDATE AddBlock SET BlockName = @name, IsBurnable = @isBurnable, " +
+                "IsTransparent = @isTransparent, IsFull = @isFull, EmitsLight = @EmitsLight " +
+                "WHERE BlockId = @BlockId;";
             updateCmd.Parameters.AddWithValue("@name", block.BlockName);
             updateCmd.Parameters.AddWithValue("@isBurnable", block.IsBurnable);
             updateCmd.Parameters.AddWithValue("@isTransparent", block.IsTransparent);
@@ -83,10 +83,11 @@ namespace MinecraftBlockIndex.Block_additon_handling
             con.Open();
 
             // Execute insert query
-            updateCmd.ExecuteNonQuery();
+            int numOfRows = updateCmd.ExecuteNonQuery();
 
             // Close connection to database
             con.Close();
+            return numOfRows;
         }
 
         /// <summary>
