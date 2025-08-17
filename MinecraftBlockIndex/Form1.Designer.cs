@@ -32,7 +32,7 @@
             btnExit = new Button();
             btnRemoveBlock = new Button();
             btnHelp = new Button();
-            comboBoxBlockName = new ComboBox();
+            comboBoxBlock = new ComboBox();
             btnViewBlock = new Button();
             groupBoxBlockView = new GroupBox();
             lblBlockName = new Label();
@@ -78,27 +78,31 @@
             btnHelp.UseVisualStyleBackColor = true;
             btnHelp.Click += btnHelp_Click;
             // 
-            // comboBoxBlockName
+            // comboBoxBlock
             // 
-            comboBoxBlockName.FormattingEnabled = true;
-            comboBoxBlockName.Location = new Point(166, 15);
-            comboBoxBlockName.Name = "comboBoxBlockName";
-            comboBoxBlockName.Size = new Size(146, 23);
-            comboBoxBlockName.TabIndex = 4;
+            comboBoxBlock.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxBlock.FormattingEnabled = true;
+            comboBoxBlock.Location = new Point(166, 15);
+            comboBoxBlock.Name = "comboBoxBlock";
+            comboBoxBlock.Size = new Size(146, 23);
+            comboBoxBlock.TabIndex = 4;
+            comboBoxBlock.SelectedIndexChanged += comboBoxBlock_SelectedIndexChanged;
             // 
             // btnViewBlock
             // 
+            btnViewBlock.Enabled = false;
             btnViewBlock.Location = new Point(166, 59);
             btnViewBlock.Name = "btnViewBlock";
             btnViewBlock.Size = new Size(126, 23);
             btnViewBlock.TabIndex = 5;
             btnViewBlock.Text = "View Block";
             btnViewBlock.UseVisualStyleBackColor = true;
+            btnViewBlock.Click += btnViewBlock_Click;
             // 
             // groupBoxBlockView
             // 
             groupBoxBlockView.Controls.Add(lblBlockName);
-            groupBoxBlockView.Controls.Add(comboBoxBlockName);
+            groupBoxBlockView.Controls.Add(comboBoxBlock);
             groupBoxBlockView.Controls.Add(btnViewBlock);
             groupBoxBlockView.Location = new Point(12, 21);
             groupBoxBlockView.Name = "groupBoxBlockView";
@@ -120,7 +124,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(506, 208);
+            ClientSize = new Size(506, 319);
             Controls.Add(groupBoxBlockView);
             Controls.Add(btnHelp);
             Controls.Add(btnRemoveBlock);
@@ -128,6 +132,7 @@
             Controls.Add(btnAddBlock);
             Name = "Form1";
             Text = "Minecraft Block Index";
+            Load += Form1_Load;
             groupBoxBlockView.ResumeLayout(false);
             groupBoxBlockView.PerformLayout();
             ResumeLayout(false);
@@ -139,7 +144,7 @@
         private Button btnExit;
         private Button btnRemoveBlock;
         private Button btnHelp;
-        private ComboBox comboBoxBlockName;
+        private ComboBox comboBoxBlock;
         private Button btnViewBlock;
         private GroupBox groupBoxBlockView;
         private Label lblBlockName;

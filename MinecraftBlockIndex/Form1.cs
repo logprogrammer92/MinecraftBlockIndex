@@ -4,9 +4,29 @@ namespace MinecraftBlockIndex
 {
     public partial class Form1 : Form
     {
+        List<AddBlock> blocks;
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void refreshBlockData()
+        {
+            blocks = AddBlockDB.GetAllBlocks();
+            comboBoxBlock.Items.Clear();
+            foreach (AddBlock block in blocks)
+            {
+                if (!comboBoxBlock.Items.Contains(block))
+                {
+                    comboBoxBlock.Items.Add(block);
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            refreshBlockData();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -33,6 +53,26 @@ namespace MinecraftBlockIndex
         {
             addBlockForm addBlockForm = new addBlockForm();
             addBlockForm.ShowDialog();
+        }
+
+        private void comboBoxBlock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxBlock.SelectedItem is AddBlock selectedBlock)
+            {
+                btnViewBlock.Enabled = true;
+                lblBlockName.Text = selectedBlock.BlockName;
+            }
+            else
+            {
+                btnViewBlock.Enabled = false;
+            }
+        }
+
+        private void btnViewBlock_Click(object sender, EventArgs e)
+        {
+            UpdateViewBlockForm viewBlockForm = new UpdateViewBlockForm((AddBlock)comboBoxBlock.SelectedItem);
+            viewBlockForm.ShowDialog();
+
         }
     }
 }

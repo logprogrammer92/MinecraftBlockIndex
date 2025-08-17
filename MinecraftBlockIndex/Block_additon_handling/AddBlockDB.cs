@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using MinecraftBlockIndex.Block_additon_handling;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace MinecraftBlockIndex.Block_additon_handling
@@ -18,8 +21,8 @@ namespace MinecraftBlockIndex.Block_additon_handling
         private static SqlConnection GetDatabaseConnection()
         {
             // Establish a connection to the database
-            return new SqlConnection("Data Source=localdb;Initial Catalog=MinecraftBlockIndex;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
+            return new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MinecraftBlockIndex;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            //Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; Trust Server Certificate = False; Application Intent = ReadWrite; Multi Subnet Failover = False
         }
 
         /// <summary>
@@ -73,7 +76,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
             updateCmd.Parameters.AddWithValue("@isTransparent", block.IsTransparent);
             updateCmd.Parameters.AddWithValue("@isFull", block.IsFull);
             updateCmd.Parameters.AddWithValue("@EmitsLight", block.EmitsLight);
-            updateCmd.Parameters.AddWithValue("@BlockId", block.BlockID);
+            updateCmd.Parameters.AddWithValue("@BlockId", block.BlockId);
 
 
             // Open connection to database
@@ -101,7 +104,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
             deleteCommand.CommandText = "DELETE FROM AddBlock WHERE BlockId = @BlockId";
 
-            deleteCommand.Parameters.AddWithValue("@BlockId", block.BlockID);
+            deleteCommand.Parameters.AddWithValue("@BlockId", block.BlockId);
 
 
             // Open connection to database
@@ -166,7 +169,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
             while (reader.Read())
             {
                 int blockId = Convert.ToInt32(reader["BlockId"]);
-                String blockName = reader["BlockName"].ToString();
+                string blockName = reader["BlockName"].ToString();
                 bool isBurnable = reader.GetBoolean(reader.GetOrdinal(name: "IsBurnable"));
                 bool isTransparent = reader.GetBoolean(reader.GetOrdinal(name: "IsTransparent"));
                 bool isFull = reader.GetBoolean(reader.GetOrdinal(name: "IsFull"));
@@ -174,7 +177,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
 
                 AddBlock tempBlock = new AddBlock(blockName, isBurnable, isTransparent, isFull, emitsLight);
-                tempBlock.BlockID = blockId;
+                tempBlock.BlockId = blockId;
 
                 blocks.Add(tempBlock);
             }
