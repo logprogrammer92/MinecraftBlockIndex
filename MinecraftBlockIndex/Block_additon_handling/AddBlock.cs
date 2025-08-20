@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace MinecraftBlockIndex.Block_additon_handling
 {
-    internal class AddBlock
+    public class AddBlock
     {
         //object parameters for block addition
-        public int BlockID { get; private set; } //Unique ID for block
-        public required string BlockName { get; set; } //Name of block tied to ID
+        private int _blockId; //Unique ID for block
+
+        public int BlockId
+        {
+            get { return _blockId; }
+            set { _blockId = value; }
+        }
+        public string BlockName { get; set; } //Name of block tied to ID
         public bool IsBurnable { get; set; } //Indicates if block can be burned by fire or lava
         public bool IsTransparent { get; set; } //Indicates if block is transparent ie glass, leaves
         public bool IsFull { get; set; } //Indicates if solid block ie dirt, stone as opposed to slabs or stairs (not full blocks)
@@ -28,12 +34,27 @@ namespace MinecraftBlockIndex.Block_additon_handling
             if (!blockName.All(c => char.IsLetterOrDigit(c) || c == ' '))
                 throw new ArgumentException("Block name can only contain letters, digits, and spaces.", nameof(blockName));
 
-            BlockID = blockID;
+            _blockId = blockID;
             BlockName = blockName;
             IsBurnable = isBurnable;
             IsTransparent = isTransparent;
             IsFull = isFull;
             EmitsLight = emitsLight;
+        }
+
+        public AddBlock(string blockName, bool isBurnable, bool isTransparent, bool isFull, bool emitsLight)
+        {
+
+            BlockName = blockName;
+            IsBurnable = isBurnable;
+            IsTransparent = isTransparent;
+            IsFull = isFull;
+            EmitsLight = emitsLight;
+        }
+
+        public override string ToString()
+        {
+            return BlockName;
         }
     }
 }
