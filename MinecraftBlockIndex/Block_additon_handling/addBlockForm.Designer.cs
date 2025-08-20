@@ -33,7 +33,7 @@
             boxAddBlock = new GroupBox();
             btnNeedHelp = new Button();
             lblName = new Label();
-            textBox1 = new TextBox();
+            txtBlockName = new TextBox();
             radioIsTransparent = new RadioButton();
             radioIsSolid = new RadioButton();
             radioIsBurnable = new RadioButton();
@@ -65,7 +65,7 @@
             // 
             boxAddBlock.Controls.Add(btnNeedHelp);
             boxAddBlock.Controls.Add(lblName);
-            boxAddBlock.Controls.Add(textBox1);
+            boxAddBlock.Controls.Add(txtBlockName);
             boxAddBlock.Controls.Add(radioIsTransparent);
             boxAddBlock.Controls.Add(radioIsSolid);
             boxAddBlock.Controls.Add(radioIsBurnable);
@@ -96,12 +96,12 @@
             lblName.TabIndex = 6;
             lblName.Text = "Block Name";
             // 
-            // textBox1
+            // txtBlockName
             // 
-            textBox1.Location = new Point(122, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
+            txtBlockName.Location = new Point(122, 22);
+            txtBlockName.Name = "txtBlockName";
+            txtBlockName.Size = new Size(100, 23);
+            txtBlockName.TabIndex = 5;
             // 
             // radioIsTransparent
             // 
@@ -169,7 +169,7 @@
         private GroupBox boxAddBlock;
         private Button btnNeedHelp;
         private Label lblName;
-        private TextBox textBox1;
+        private TextBox txtBlockName;
         private RadioButton radioIsTransparent;
         private RadioButton radioIsSolid;
         private RadioButton radioIsBurnable;

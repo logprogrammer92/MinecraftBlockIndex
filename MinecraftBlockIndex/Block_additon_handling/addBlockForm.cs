@@ -40,7 +40,48 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            //validates data and user input before proceeding
+            if (!dataValidation()) return;
+            if (!userValidation()) return;
 
+            MakeBlock();
+            MessageBox.Show("Block added successfully!");
+        }
+
+        private bool dataValidation()
+        {
+            if (string.IsNullOrWhiteSpace(txtBlockName.Text))
+            {
+                MessageBox.Show("Please enter a block name.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool userValidation()
+        {
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to add this block?",
+                "Confirm Addition",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            return confirmResult == DialogResult.Yes;
+        }
+
+        private void MakeBlock() 
+        {
+            AddBlock newBlock = new AddBlock(
+                txtBlockName.Text.Trim(),
+                radioIsBurnable.Checked,
+                radioIsTransparent.Checked,
+                radioIsSolid.Checked,
+                radioEmitsLight.Checked
+            );
+
+            AddBlockDB.Add(newBlock); // Add the new block to the database
         }
     }
 }
