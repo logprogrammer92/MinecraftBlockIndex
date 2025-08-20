@@ -40,13 +40,12 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (!dataValidation())
-            {
-                return; // Exit if validation fails
-            }
+            //validates data and user input before proceeding
+            if (!dataValidation()) return;
+            if (!userValidation()) return;
 
-                MakeBlock();
-                MessageBox.Show("Block added successfully!");
+            MakeBlock();
+            MessageBox.Show("Block added successfully!");
         }
 
         private bool dataValidation()
@@ -57,18 +56,19 @@ namespace MinecraftBlockIndex.Block_additon_handling
                 return false;
             }
 
+            return true;
+        }
+
+        private bool userValidation()
+        {
             DialogResult confirmResult = MessageBox.Show(
                 "Are you sure you want to add this block?",
                 "Confirm Addition",
-                MessageBoxButtons.YesNo
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
             );
 
-            if (confirmResult == DialogResult.Yes) 
-            { 
-                return true; 
-            }
-
-            return false; // Exit if user does not confirm
+            return confirmResult == DialogResult.Yes;
         }
 
         private void MakeBlock() 
