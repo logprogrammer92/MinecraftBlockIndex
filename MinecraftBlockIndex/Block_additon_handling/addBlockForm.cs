@@ -20,7 +20,7 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void btnNeedHelp_Click(object sender, EventArgs e)
