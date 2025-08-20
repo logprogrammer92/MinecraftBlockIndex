@@ -40,12 +40,39 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (!dataValidation())
+            {
+                return; // Exit if validation fails
+            }
+
+                MakeBlock();
+                MessageBox.Show("Block added successfully!");
+        }
+
+        private bool dataValidation()
+        {
             if (string.IsNullOrWhiteSpace(txtBlockName.Text))
             {
                 MessageBox.Show("Please enter a block name.");
-                return;
+                return false;
             }
 
+            DialogResult confirmResult = MessageBox.Show(
+                "Are you sure you want to add this block?",
+                "Confirm Addition",
+                MessageBoxButtons.YesNo
+            );
+
+            if (confirmResult == DialogResult.Yes) 
+            { 
+                return true; 
+            }
+
+            return false; // Exit if user does not confirm
+        }
+
+        private void MakeBlock() 
+        {
             AddBlock newBlock = new AddBlock(
                 txtBlockName.Text.Trim(),
                 radioIsBurnable.Checked,
@@ -55,7 +82,6 @@ namespace MinecraftBlockIndex.Block_additon_handling
             );
 
             AddBlockDB.Add(newBlock); // Add the new block to the database
-            MessageBox.Show("Block added successfully!");
         }
     }
 }
