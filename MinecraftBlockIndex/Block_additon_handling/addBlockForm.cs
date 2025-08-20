@@ -40,7 +40,22 @@ namespace MinecraftBlockIndex.Block_additon_handling
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtBlockName.Text))
+            {
+                MessageBox.Show("Please enter a block name.");
+                return;
+            }
 
+            AddBlock newBlock = new AddBlock(
+                txtBlockName.Text.Trim(),
+                radioIsBurnable.Checked,
+                radioIsTransparent.Checked,
+                radioIsSolid.Checked,
+                radioEmitsLight.Checked
+            );
+
+            AddBlockDB.Add(newBlock); // Add the new block to the database
+            MessageBox.Show("Block added successfully!");
         }
     }
 }
