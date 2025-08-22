@@ -34,10 +34,10 @@
             btnNeedHelp = new Button();
             lblName = new Label();
             txtBlockName = new TextBox();
-            radioIsTransparent = new RadioButton();
-            radioIsSolid = new RadioButton();
-            radioIsBurnable = new RadioButton();
-            radioEmitsLight = new RadioButton();
+            checkIsLight = new CheckBox();
+            checkIsBurnable = new CheckBox();
+            checkIsFull = new CheckBox();
+            checkIsTransparent = new CheckBox();
             boxAddBlock.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,13 +63,13 @@
             // 
             // boxAddBlock
             // 
+            boxAddBlock.Controls.Add(checkIsTransparent);
+            boxAddBlock.Controls.Add(checkIsFull);
+            boxAddBlock.Controls.Add(checkIsBurnable);
+            boxAddBlock.Controls.Add(checkIsLight);
             boxAddBlock.Controls.Add(btnNeedHelp);
             boxAddBlock.Controls.Add(lblName);
             boxAddBlock.Controls.Add(txtBlockName);
-            boxAddBlock.Controls.Add(radioIsTransparent);
-            boxAddBlock.Controls.Add(radioIsSolid);
-            boxAddBlock.Controls.Add(radioIsBurnable);
-            boxAddBlock.Controls.Add(radioEmitsLight);
             boxAddBlock.Location = new Point(12, 13);
             boxAddBlock.Name = "boxAddBlock";
             boxAddBlock.Size = new Size(228, 182);
@@ -103,49 +103,45 @@
             txtBlockName.Size = new Size(100, 23);
             txtBlockName.TabIndex = 5;
             // 
-            // radioIsTransparent
+            // checkIsLight
             // 
-            radioIsTransparent.AutoSize = true;
-            radioIsTransparent.Location = new Point(21, 138);
-            radioIsTransparent.Name = "radioIsTransparent";
-            radioIsTransparent.Size = new Size(111, 19);
-            radioIsTransparent.TabIndex = 4;
-            radioIsTransparent.TabStop = true;
-            radioIsTransparent.Text = "Is it transparent?";
-            radioIsTransparent.UseVisualStyleBackColor = true;
+            checkIsLight.AutoSize = true;
+            checkIsLight.Location = new Point(21, 59);
+            checkIsLight.Name = "checkIsLight";
+            checkIsLight.Size = new Size(90, 19);
+            checkIsLight.TabIndex = 8;
+            checkIsLight.Text = "Emits Light?";
+            checkIsLight.UseVisualStyleBackColor = true;
             // 
-            // radioIsSolid
+            // checkIsBurnable
             // 
-            radioIsSolid.AutoSize = true;
-            radioIsSolid.Location = new Point(21, 113);
-            radioIsSolid.Name = "radioIsSolid";
-            radioIsSolid.Size = new Size(81, 19);
-            radioIsSolid.TabIndex = 3;
-            radioIsSolid.TabStop = true;
-            radioIsSolid.Text = "Full Block?";
-            radioIsSolid.UseVisualStyleBackColor = true;
+            checkIsBurnable.AutoSize = true;
+            checkIsBurnable.Location = new Point(21, 84);
+            checkIsBurnable.Name = "checkIsBurnable";
+            checkIsBurnable.Size = new Size(78, 19);
+            checkIsBurnable.TabIndex = 9;
+            checkIsBurnable.Text = "Burnable?";
+            checkIsBurnable.UseVisualStyleBackColor = true;
             // 
-            // radioIsBurnable
+            // checkIsFull
             // 
-            radioIsBurnable.AutoSize = true;
-            radioIsBurnable.Location = new Point(21, 88);
-            radioIsBurnable.Name = "radioIsBurnable";
-            radioIsBurnable.Size = new Size(77, 19);
-            radioIsBurnable.TabIndex = 2;
-            radioIsBurnable.TabStop = true;
-            radioIsBurnable.Text = "Burnable?";
-            radioIsBurnable.UseVisualStyleBackColor = true;
+            checkIsFull.AutoSize = true;
+            checkIsFull.Location = new Point(21, 109);
+            checkIsFull.Name = "checkIsFull";
+            checkIsFull.Size = new Size(97, 19);
+            checkIsFull.TabIndex = 10;
+            checkIsFull.Text = "Whole block?";
+            checkIsFull.UseVisualStyleBackColor = true;
             // 
-            // radioEmitsLight
+            // checkIsTransparent
             // 
-            radioEmitsLight.AutoSize = true;
-            radioEmitsLight.Location = new Point(21, 63);
-            radioEmitsLight.Name = "radioEmitsLight";
-            radioEmitsLight.Size = new Size(89, 19);
-            radioEmitsLight.TabIndex = 2;
-            radioEmitsLight.TabStop = true;
-            radioEmitsLight.Text = "Emits Light?";
-            radioEmitsLight.UseVisualStyleBackColor = true;
+            checkIsTransparent.AutoSize = true;
+            checkIsTransparent.Location = new Point(21, 134);
+            checkIsTransparent.Name = "checkIsTransparent";
+            checkIsTransparent.Size = new Size(93, 19);
+            checkIsTransparent.TabIndex = 11;
+            checkIsTransparent.Text = "Transparent?";
+            checkIsTransparent.UseVisualStyleBackColor = true;
             // 
             // addBlockForm
             // 
@@ -170,9 +166,9 @@
         private Button btnNeedHelp;
         private Label lblName;
         private TextBox txtBlockName;
-        private RadioButton radioIsTransparent;
-        private RadioButton radioIsSolid;
-        private RadioButton radioIsBurnable;
-        private RadioButton radioEmitsLight;
+        private CheckBox checkIsTransparent;
+        private CheckBox checkIsFull;
+        private CheckBox checkIsBurnable;
+        private CheckBox checkIsLight;
     }
 }
