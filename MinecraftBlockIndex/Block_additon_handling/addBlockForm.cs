@@ -75,10 +75,10 @@ namespace MinecraftBlockIndex.Block_additon_handling
         {
             AddBlock newBlock = new AddBlock(
                 txtBlockName.Text.Trim(),
-                radioIsBurnable.Checked,
-                radioIsTransparent.Checked,
-                radioIsSolid.Checked,
-                radioEmitsLight.Checked
+                checkIsBurnable.Checked,
+                checkIsTransparent.Checked,
+                checkIsFull.Checked,
+                checkIsLight.Checked
             );
 
             AddBlockDB.Add(newBlock); // Add the new block to the database
