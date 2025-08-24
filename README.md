@@ -10,3 +10,6 @@ texture using basic CRUD operations.
 
 ## Database Information
 - This project utilizes a Microsoft SQL database and will connect to the server named `localdb` and a database on that server named `MSSQLLocalDB`. To change this behavior, modify the [connection string](./MinecraftBlockIndex/AddBlockDB.cs) to whatever server and database you want to use.
+
+### Initial Setup
+- When setting this project up for the first time, the database needs to be populated with a few blocks. Run the database script [found here](./MinecraftBlockIndex/ResetAddBlockDB.sql) to reset the database to a known working state.
