@@ -9,5 +9,4 @@ texture using basic CRUD operations.
 - Open the project in Visual Studio.
 
 ## Database Information
-- This project utilizes a Microsoft SQL database and will connect to that database using `localdb`. To change this behavior, modify the [connection string](./MinecraftBlockIndex/AddBlockDB.cs).
-- 
+- This project utilizes a Microsoft SQL database and will connect to the server named `localdb` and a database on that server named `MSSQLLocalDB`. To change this behavior, modify the [connection string](./MinecraftBlockIndex/AddBlockDB.cs) to whatever server and database you want to use.
